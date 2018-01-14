@@ -1,0 +1,82 @@
+{
+	"variables": [],
+	"info": {
+		"name": "snowAPIGateway",
+		"_postman_id": "4dffd9ff-bfc1-a928-a81f-627ddedd336a",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "version1",
+			"description": "",
+			"item": [
+				{
+					"name": "/register",
+					"request": {
+						"url": "{{url}}/register",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"jose\", \n\t\"password\": \"asdf\"\n}"
+						},
+						"description": "Authorize a known user.  Pass in username and password fields (via body).  JWT token gets sent back to you.  Copy that token over to any method that requires it.  You put Authorization key in header, with key \"JTW token\".  Replace <token> with the token that was given to you."
+					},
+					"response": []
+				},
+				{
+					"name": "/auth (populates jwt_token variable)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"Access token was not empty\"] = jsonData.access_token !== undefined;",
+									"",
+									"postman.setEnvironmentVariable(\"jwt_token\", jsonData.access_token);"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{url}}/auth",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"jose\", \n\t\"password\": \"asdf\"\n}"
+						},
+						"description": "Authorize a known user.  Pass in username and password fields (via body).  JWT token gets sent back to you.  Copy that token over to any method that requires it.  You put Authorization key in header, with key \"JTW token\".  Replace <token> with the token that was given to you."
+					},
+					"response": []
+				},
+				{
+					"name": "/incident/<count>",
+					"request": {
+						"url": "{{url}}/items",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

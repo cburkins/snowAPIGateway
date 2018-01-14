@@ -5,7 +5,7 @@
 - cygwin on Windows 10
 - python 3 (installed via Cygwin installer)
 
-### Features Uses
+### Features Used
 
 - python 3
 - SQLAlchemy
@@ -22,22 +22,46 @@
 - Type "python3", and select the interpreter
 - Type "pip3", and select the pip installer
 
-
-### Accessing this code (for the class)
-
-- https://github.com/schoolofcode-me/rest-api-sections/tree/master/section3
-
-
-### Section 3 (using Cygwin, no virtualenv)
+### Installation
 
 **Prep**
 
 - Within Cygwin
-- pip3 install flask
+- pip3 install virtualenv
 
+**Creating virtualenv by hand (needs to be done once per installation)**
+- virtualenv venv --python=python3
+- python -V (will likely show you version 2)
+- source venv/bin/activate
+- python venv/bin/pip install -r requirements.txt
+
+**Copy of requirements.txt**
+
+```
+aniso8601==2.0.0
+click==6.7
+Flask==0.12.2
+Flask-JWT==0.3.2
+Flask-RESTful==0.3.6
+Flask-SQLAlchemy==2.3.2
+itsdangerous==0.24
+Jinja2==2.10
+MarkupSafe==1.0
+PyJWT==1.4.2
+pytz==2017.3
+six==1.11.0
+SQLAlchemy==1.2.0
+Werkzeug==0.14.1
+```
+
+installing the (slightly) harder way: python venv/bin/pip install Flask-RESTful Flask-JWT Flask-SQLAlchemy (also installs Flask)
+
+
+**Starting the back-end server**
+- source venv/bin/activate
+- python app.py
 
 **Running it**
-
 - (within Cygwin) python3 app.py
 - Should say:
 
@@ -46,56 +70,8 @@
 ```
 
 
-### Section 4 (Flask-RESTful and virtualenv)
-
-**Installing virtualenv**
-- Within Cygwin
-- pip3 install virtualenv
-
-**Creating virtualenv for Section 4**
-- virtualenv venv --python=python3
-
-**Testing and leaving the virtualenv**
-
-- source venv/bin/activate
-- python -V (should show you version 3)
-- deactivate 
-- python -V (will likely show you version 2)
-
-**Installing libraries in the virtualenv**
-
-- source venv/bin/activate
-- python -V (will show you version 3 again)
-- python venv/bin/pip install Flask-RESTful
-- python venv/bin/pip install Flask-JWT
-
-
-NOTE: you no longer need pip3
-NOTE: turns out unix scripts cannot have a space in the shebang path, so "pip install Flask-RESTful" will fail 
-
-### Section 5
-
-**Creating virtualenv for Section 5**
-
-- virtualenv venv --python=python3
-- source venv/bin/activate
-- python venv/bin/pip install Flask-RESTful Flask-JWT  (also installs Flask)
-
-
-### Section 6
-
-**Creating virtualenv for Section 6**
-- virtualenv venv --python=python3
-- source venv/bin/activate
-- python venv/bin/pip install Flask-RESTful Flask-JWT Flask-SQLAlchemy (also installs Flask)
-
-**Starting the back-end server**
-- source venv/bin/activate
-- python app.py
-
-
-### Other commands
-
-
+### Other commands and notes
 
 - python venv/bin/pip freeze
+NOTE: you no longer need pip3
+NOTE: turns out unix scripts cannot have a space in the shebang path, so "pip install Flask-RESTful" will fail 
