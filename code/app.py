@@ -54,7 +54,7 @@ api.add_resource(ItemList, '/items')
 # http://127.0.0.1/register (POST to register a new user)
 api.add_resource(UserRegister, '/register' )
 
-api.add_resource(Incident, '/incident/<int:count>');
+api.add_resource(Incident, '/incident');
 
 # Check to see if we're the main program (not just imported)
 if __name__ == '__main__':
